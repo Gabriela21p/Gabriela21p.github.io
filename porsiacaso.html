@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huella Cero</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="logo.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .container {
+            display: none; 
+            padding: 2rem;
+        }
+
+        .login {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            display: block;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        section {
+            padding: 2rem;
+            margin: 2rem 0;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none; 
+        }
+
+        section.active {
+            display: block; 
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #28a745;
+            color: white;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        video {
+            width: 100%;
+            margin-top: 1rem;
+            border-radius: 5px;
+        }
+
+        #huella {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+/* <!-- Sección Calculadora de Huella -->*/ 
+#huella {
+    background: url('https://revistadigital.mx/wp-content/uploads/2023/05/planeta-giphy.gif') no-repeat center center;
+    background-size: cover;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    color: white; 
+}
+
+h2, p {
+    color: white;
+}
+
+label {
+    color: white;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #00796b;
+}
+
+p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    font-size: 1rem;
+    color: #333;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #00796b;
+    outline: none;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #00796b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn:hover {
+    background-color: #004d40;
+}
+
+#resultadoHuellaContainer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+.progress {
+    height: 20px;
+    background-color: #00796b;
+    width: 0;
+    border-radius: 5px;
+    transition: width 1s ease;
+}
+
+#resultadoHuella {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #00796b;
+}
+
+/* <!-- Sección GUIA DE RECICLAJE -->*/ 
+#reciclaje {
+    background-color: #f0f8ff; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+.reciclaje-list {
+    list-style: none; 
+    padding: 0;
+    margin: 10px 0;
+}
+
+.reciclaje-list li {
+    background-color: #e7f5ff; 
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 5px solid #50C878; 
+}
+
+.video-container {
+    text-align: center; 
+    margin: 15px 0;
+}
+
+.video-container video {
+    width: 100%; 
+    max-width: 600px; 
+    border-radius: 10px; 
+}
+
+.btn {
+    display: inline-block;
+    background-color: #50C878; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    margin: 10px auto;
+}
+
+.btn:hover {
+    background-color: #3da75b; 
+}
+
+.mensaje {
+    text-align: center;
+    color: #333;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.notificaciones {
+    background-color: #e7f5ff; 
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center; 
+}
+
+.notificaciones input {
+    margin: 5px 0;
+    padding: 10px;
+    width: 80%; 
+    max-width: 300px; 
+    border: 1px solid #50C878; 
+    border-radius: 5px; 
+}
+
+.notificaciones button {
+    margin-top: 10px;
+}
+
+/*<!-- Sección Proyectos Ambientales -->*/
+#proyectos {
+    background-color: #f0f9ff;
+    border: 1px solid #50C878;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.proyectos-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.proyectos-list li {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #50C878;
+    border-radius: 5px;
+    background-color: #e7f5ff;
+    transition: transform 0.2s;
+}
+
+.proyectos-list li:hover {
+    transform: scale(1.05);
+}
+
+.detalles-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+.detalles-btn:hover {
+    background-color: #0056b3;
+}
+
+.btn {
+    background-color: #50C878;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45b36e;
+}
+
+.mensaje {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #50C878;
+}
+
+.form-container {
+    background-color: #ffffff;
+    border: 1px solid #50C878;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.form-container label {
+    display: block;
+    margin-top: 10px;
+}
+
+.form-container input,
+.form-container select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+/* SECCION EDUCACION*/
+#educacion {
+    background-color: #e0f7fa;
+    border: 1px solid #00796b;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #00796b;
+}
+
+.recursos-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recursos-list li {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #00796b;
+    border-radius: 5px;
+    background-color: #b2ebf2;
+    transition: transform 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recursos-list li:hover {
+    transform: scale(1.02);
+}
+
+.recurso-link {
+    text-decoration: none;
+    color: #00695c;
+    font-weight: bold;
+}
+
+.recurso-link:hover {
+    text-decoration: underline;
+    color: #004d40;
+}
+
+.favorito-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #ffc107;
+    transition: transform 0.2s;
+}
+
+.favorito-btn:hover {
+    transform: scale(1.2);
+}
+
+.video-container {
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #00796b;
+    border-radius: 10px;
+}
+
+.empresa-container {
+    margin: 20px 0;
+}
+
+.formulario {
+    background-color: #ffffff;
+    border: 1px solid #00796b;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.formulario label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.formulario input, .formulario select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #00796b;
+    border-radius: 5px;
+}
+
+.formulario button {
+    background-color: #00796b;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.formulario button:hover {
+    background-color: #004d40;
+}
+
+.mensaje {
+    color: green;
+    margin-top: 10px;
+}
+
+.oculto {
+    display: none;
+}
+
+
+/* SECCION RECOMPENSAS*/
+.recompensas-container {
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recompensas-container h2 {
+    color: #007B5F;
+}
+
+.ver-recompensas-btn {
+    background-color: #50C878;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.ver-recompensas-btn:hover {
+    background-color: #45b565;
+}
+
+.recompensas-lista {
+    margin-top: 20px;
+}
+
+.recompensa-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.reclamar-btn {
+    background-color: #007B5F;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reclamar-btn:hover {
+    background-color: #005f47;
+}
+
+.mensaje {
+    color: #007B5F;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.consumo-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.consumo-container h2 {
+    color: #007B5F;
+}
+
+.consumo-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.registrar-btn {
+    background-color: #50C878;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.registrar-btn:hover {
+    background-color: #45b565;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #007B5F;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #e7f3ff;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-leaf"></i> Huella Cero</h1>
+        <p>Uniendo Fuerzas por un Planeta Saludable</p>
+    </header>
+
+    <div class="login container" style="display: block;">
+        <h2>Ingrese su correo electrónico</h2>
+        <input type="email" id="email" placeholder="Correo electrónico" required>
+        <button onclick="ingresar()">Ingresar</button>
+    </div>
+
+    <div class="menu container">
+        <nav>
+            <ul>
+                <li><a onclick="showSection('huella')">Calculadora de Huella</a></li>
+                <li><a onclick="showSection('consumo')">Monitoreo de Consumo</a></li>
+                <li><a onclick="showSection('reciclaje')">Guía de Reciclaje</a></li>
+                <li><a onclick="showSection('proyectos')">Proyectos Ambientales</a></li>
+                <li><a onclick="showSection('educacion')">Educación y Recursos</a></li>
+                <li><a onclick="showSection('recompensas')">Recompensas</a></li>
+            </ul>
+        </nav>
+
+<!-- Sección Calculadora de Huella -->
+        <section id="huella" class="active">
+            <h2>Calcula tu Huella de Carbono e Hídrica</h2>
+            <p>Introduce tus hábitos de consumo para calcular tu impacto ambiental y visualizar tu huella.</p>
+            
+            <form id="carbonForm">
+                <div class="form-group">
+                    <label for="energia">Consumo de energía (kWh/mes):</label>
+                    <input type="number" id="energia" name="energia" placeholder="Ej. 150" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="agua">Consumo de agua (litros/mes):</label>
+                    <input type="number" id="agua" name="agua" placeholder="Ej. 500" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="transporte">Transporte (km/mes):</label>
+                    <input type="number" id="transporte" name="transporte" placeholder="Ej. 300" required>
+                </div>
+                
+                <button type="button" class="btn" onclick="calcularHuella()">Calcular Huella</button>
+            </form>
+            
+            <div id="resultadoHuellaContainer" style="display: none;">
+                <p id="resultadoHuella"></p>
+                <div class="progress-bar">
+                    <div id="progress" class="progress"></div>
+                </div>
+            </div>
+        </section>
+        
+
+            <!-- Imagen temática -->
+            <img src="https://www.example.com/huella_cero.jpg" alt="Huella Cero Impacto Ambiental">
+        </section>
+
+<!-- Sección Monitoreo de Consumo -->
+        <section id="consumo" class="consumo-container">
+            <h2>Monitoreo de Consumo 📊</h2>
+            <p>Registra y analiza tu consumo de energía, agua y recursos.</p>
+            
+            <form id="consumoForm">
+                <label for="energiaMes">Consumo de energía (kWh):</label>
+                <input type="number" id="energiaMes" name="energiaMes" required><br>
+
+                <label for="aguaMes">Consumo de agua (litros):</label>
+                <input type="number" id="aguaMes" name="aguaMes" required><br>
+
+                <button type="button" class="registrar-btn" onclick="registrarConsumo()">Registrar Consumo</button>
+            </form>
+
+            <table id="tablaConsumo">
+                <thead>
+                    <tr>
+                        <th>Mes</th>
+                        <th>Consumo de Energía (kWh)</th>
+                        <th>Consumo de Agua (litros)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+
+
+<!-- Sección Guía de Reciclaje -->
+        <section id="reciclaje">
+            <h2>Guía de Reciclaje</h2>
+            <p>Aprende a reciclar correctamente y reduce tus residuos.</p>
+            <ul class="reciclaje-list">
+                <li>🌍 <strong>Plásticos:</strong> Separar por tipo y lavar antes de reciclar.</li>
+                <li>🍷 <strong>Vidrios:</strong> No mezclar con cerámicas o espejos rotos.</li>
+                <li>📄 <strong>Papel:</strong> Evitar reciclar papel mojado o sucio.</li>
+                <li>⚠️ <strong>Residuos peligrosos:</strong> Llamar a servicios especializados.</li>
+            </ul>
+
+            <div class="video-container">
+                <video controls>
+                    <source src="https://youtu.be/YiHTNfKJwAw?si=fA0TB2ZyCcsZqis2" type="video/mp4">
+                </video>
+            </div>
+
+            <button type="button" class="btn" onclick="mostrarRecordatorio()">Recordatorio de Reciclaje</button>
+            <p id="mensajeReciclaje" class="mensaje"></p>
+
+            <div id="notificaciones" class="notificaciones">
+                <h3>Recibe Notificaciones sobre Reciclaje</h3>
+                <p>Ingresa tu información para recibir recordatorios sobre qué reciclar y cuándo:</p>
+                <input type="text" id="nombre" placeholder="Tu nombre" required>
+                <input type="email" id="email" placeholder="Tu correo electrónico" required>
+                <button type="button" class="btn" onclick="registrarNotificacion()">Registrar Notificación</button>
+                <p id="mensajeNotificacion" class="mensaje"></p>
+            </div>
+        </section>
+
+
+<!-- Sección Proyectos Ambientales -->
+       
+        
+        <section id="proyectos">
+            <h2>Proyectos Ambientales 🌱</h2>
+            <p>Descubre iniciativas en tu comunidad y participa en eventos ecológicos.</p>
+            <ul class="proyectos-list">
+                <li>
+                    🌊 <strong>Limpieza de playas:</strong> 15 de octubre
+                    <button class="detalles-btn" onclick="mostrarDetalles('Limpieza de playas', 'Participa en la limpieza de nuestras playas. Se proporcionarán guantes y bolsas de basura. ¡Trae tu espíritu ecológico!')">Detalles</button>
+                </li>
+                <li>
+                    🌳 <strong>Plantación de árboles:</strong> 22 de octubre
+                    <button class="detalles-btn" onclick="mostrarDetalles('Plantación de árboles', 'Únete a nosotros para plantar árboles en nuestra comunidad. Ayuda a mejorar nuestro entorno y crea conciencia sobre la reforestación.')">Detalles</button>
+                </li>
+                <li>
+                    ♻️ <strong>Reciclaje comunitario:</strong> 29 de octubre
+                    <button class="detalles-btn" onclick="mostrarDetalles('Reciclaje comunitario', 'Ayuda a clasificar y reciclar materiales en nuestra comunidad. Trae tus reciclables y colabora con otros!')">Detalles</button>
+                </li>
+            </ul>
+            <button class="btn" onclick="abrirFormulario()">Unirse a Proyecto</button>
+            <p id="mensajeProyectos" class="mensaje"></p>
+            
+            <div id="formularioProyecto" class="form-container" style="display:none;">
+                <h3>Formulario de Inscripción</h3>
+                <form id="inscripcionForm">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" required>
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" required>
+                    <label for="proyectoSeleccionado">Proyecto:</label>
+                    <select id="proyectoSeleccionado" required>
+                        <option value="">Selecciona un proyecto</option>
+                        <option value="Limpieza de playas">Limpieza de playas</option>
+                        <option value="Plantación de árboles">Plantación de árboles</option>
+                        <option value="Reciclaje comunitario">Reciclaje comunitario</option>
+                    </select>
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
+                <button class="btn" onclick="cerrarFormulario()">Cancelar</button>
+            </div>
+        </section>
+
+
+
+<!-- Sección Educación y Recursos -->
+<section id="educacion">
+    <h2>Educación y Recursos 📚</h2>
+    <p>Artículos, videos y cursos sobre sostenibilidad y cambios climáticos.</p>
+    <ul class="recursos-list">
+        <li>
+            <a href="#" class="recurso-link">Curso: Introducción a la Sostenibilidad</a>
+            <button class="favorito-btn" onclick="toggleFavorito(this)">⭐</button>
+        </li>
+        <li>
+            <a href="#" class="recurso-link">Artículo: 10 maneras de reducir el consumo de agua</a>
+            <button class="favorito-btn" onclick="toggleFavorito(this)">⭐</button>
+        </li>
+        <li>
+            <a href="#" class="recurso-link">Video: ¿Qué es la huella de carbono?</a>
+            <button class="favorito-btn" onclick="toggleFavorito(this)">⭐</button>
+        </li>
+    </ul>
+
+    <div class="empresa-container">
+        <button type="button" onclick="mostrarFormulario()">¿Perteneces a una empresa?</button>
+    </div>
+
+    <div id="formularioCertificado" class="formulario oculto">
+        <h3>Formulario de Inscripción a Cursos Certificados</h3>
+        <form id="certificadoForm">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="empresa">Nombre de la Empresa:</label>
+            <input type="text" id="empresa" name="empresa" required>
+
+            <label for="curso">Selecciona el curso:</label>
+            <select id="curso" name="curso" required>
+                <option value="">--Selecciona un curso--</option>
+                <option value="sostenibilidad">Curso: Introducción a la Sostenibilidad</option>
+                <option value="reduccion-agua">Artículo: 10 maneras de reducir el consumo de agua</option>
+                <option value="huella-carbono">Video: ¿Qué es la huella de carbono?</option>
+                <option value="cambio-climatico">Curso Certificado: Impacto del Cambio Climático</option>
+                <option value="energias-renovables">Curso Certificado: Energías Renovables en la Práctica</option>
+                <option value="gestion-residuos">Curso Certificado: Gestión Efectiva de Residuos</option>
+                <option value="ecoemprendimiento">Curso Certificado: Ecoemprendimiento y Sostenibilidad</option>
+            </select>
+
+            <button type="submit">Enviar Inscripción</button>
+            <p id="mensajeInscripcion" class="mensaje"></p>
+        </form>
+    </div>
+
+    <div class="video-container">
+        <h3>Video Educativo</h3>
+        <video controls>
+            <source src="https://www.example.com/video_sostenibilidad.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de videos.
+        </video>
+    </div>
+</section>
+
+
+<!-- Sección Recompensas -->
+<section id="recompensas" class="recompensas-container">
+    <h2>Recompensas 🎉</h2>
+    <p>Obtén recompensas por tus acciones sostenibles y mejora tu impacto ambiental.</p>
+    <button class="ver-recompensas-btn" type="button" onclick="mostrarRecompensas()">Ver mis recompensas</button>
+
+    <div id="recompensasLista" class="recompensas-lista oculto">
+        <h3>Tus Recompensas Disponibles:</h3>
+        <ul>
+            <li>
+                <div class="recompensa-item">
+                    <p>🟢 Cupón de descuento del 20% en productos ecológicos</p>
+                    <button class="reclamar-btn" onclick="reclamarRecompensa('Cupón de descuento del 20%')">Reclamar</button>
+                </div>
+            </li>
+            <li>
+                <div class="recompensa-item">
+                    <p>🌱 Un árbol plantado a tu nombre</p>
+                    <button class="reclamar-btn" onclick="reclamarRecompensa('Un árbol plantado')">Reclamar</button>
+                </div>
+            </li>
+            <li>
+                <div class="recompensa-item">
+                    <p>♻️ Participación gratuita en un taller de reciclaje</p>
+                    <button class="reclamar-btn" onclick="reclamarRecompensa('Taller de reciclaje gratuito')">Reclamar</button>
+                </div>
+            </li>
+        </ul>
+        <p id="mensajeRecompensas" class="mensaje"></p>
+    </div>
+</section>
+
+
+    <footer>
+        <p>&copy; 2024 Huella Cero. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function ingresar() {
+            const email = document.getElementById('email').value;
+            if (email) {
+                document.querySelector('.login').style.display = 'none';
+                document.querySelector('.menu').style.display = 'block';
+            }
+        }
+
+        function showSection(id) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+/* <!-- Sección Calculadora de Huella --> */
+        function calcularHuella(){ 
+    const energia = parseFloat(document.getElementById('energia').value);
+    const agua = parseFloat(document.getElementById('agua').value);
+    const transporte = parseFloat(document.getElementById('transporte').value);
+    const resultadoContainer = document.getElementById('resultadoHuellaContainer');
+    const resultadoText = document.getElementById('resultadoHuella');
+    const progressBar = document.getElementById('progress');
+
+    if (!isNaN(energia) && !isNaN(agua) && !isNaN(transporte)) {
+        const huella = (energia * 0.3) + (agua * 0.1) + (transporte * 0.5);
+        resultadoContainer.style.display = 'block';
+        resultadoText.innerText = `Tu huella total es de ${huella.toFixed(2)} unidades.`;
+        const porcentaje = Math.min((huella / 100) * 100, 100); 
+        progressBar.style.width = porcentaje + '%';
+        if (porcentaje < 33) {
+            progressBar.style.backgroundColor = '#4caf50'; 
+        } else if (porcentaje < 66) {
+            progressBar.style.backgroundColor = '#ffeb3b';
+        } else {
+            progressBar.style.backgroundColor = '#f44336';
+        }
+    } else {
+        alert('Por favor, complete todos los campos correctamente.');
+    }
+}
+
+        function registrarConsumo() {
+            const energiaMes = document.getElementById('energiaMes').value;
+            const aguaMes = document.getElementById('aguaMes').value;
+
+            const tabla = document.getElementById('tablaConsumo');
+            const nuevaFila = tabla.insertRow();
+            const celda1 = nuevaFila.insertCell(0);
+            const celda2 = nuevaFila.insertCell(1);
+            const celda3 = nuevaFila.insertCell(2);
+
+            celda1.innerText = new Date().toLocaleDateString();
+            celda2.innerText = energiaMes;
+            celda3.innerText = aguaMes;
+        }
+
+/* <!-- Sección recordatorio --> */
+
+        function mostrarRecordatorio() {
+    const recordatorios = [
+        "Recuerda que cada pequeño esfuerzo cuenta. ¡Recicla y ayuda a nuestro planeta!",
+        "Antes de reciclar, asegúrate de que tus residuos estén limpios y secos.",
+        "Investiga sobre los puntos de reciclaje en tu comunidad.",
+        "¡Reciclar es fácil y divertido! Comparte estos tips con tus amigos."
+    ];
+    const mensajeReciclaje = document.getElementById('mensajeReciclaje');
+    const randomIndex = Math.floor(Math.random() * recordatorios.length);
+    mensajeReciclaje.innerText = recordatorios[randomIndex];
+}
+
+function registrarNotificacion() {
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const mensajeNotificacion = document.getElementById('mensajeNotificacion');
+
+    if (nombre && email) {
+        mensajeNotificacion.innerText = `Gracias, ${nombre}! Te has registrado para recibir notificaciones sobre reciclaje en ${email}.`;
+    } else {
+        mensajeNotificacion.innerText = "Por favor, completa todos los campos.";
+    }
+}
+
+
+/* <!-- proyectos ambientales --> */
+function mostrarDetalles(titulo, detalles) {
+    alert(`${titulo}\n\n${detalles}`);
+}
+
+function abrirFormulario() {
+    const formulario = document.getElementById('formularioProyecto');
+    formulario.style.display = 'block'; 
+}
+
+function cerrarFormulario() {
+    const formulario = document.getElementById('formularioProyecto');
+    formulario.style.display = 'none'; 
+}
+
+document.getElementById('inscripcionForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const proyectoSeleccionado = document.getElementById('proyectoSeleccionado').value;
+    
+    const mensajeProyectos = document.getElementById('mensajeProyectos');
+    mensajeProyectos.innerText = `¡Gracias, ${nombre}! Te has unido al proyecto de ${proyectoSeleccionado}. 🎉`;
+
+ 
+    this.reset();
+    cerrarFormulario();
+});
+/* <!--EDUCACION --> */
+function toggleFavorito(button) {
+    const isFavorito = button.classList.toggle('favorito');
+
+    if (isFavorito) {
+        button.textContent = '⭐ (Favorito)'; 
+        button.style.color = '#ff9800'; 
+    } else {
+        button.textContent = '⭐'; 
+        button.style.color = '#ffc107'; 
+    }
+}
+function mostrarFormulario() {
+    const formulario = document.getElementById('formularioCertificado');
+    formulario.classList.toggle('oculto'); 
+}
+
+document.getElementById('certificadoForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const empresa = document.getElementById('empresa').value;
+    const curso = document.getElementById('curso').value;
+
+
+    const mensajeInscripcion = document.getElementById('mensajeInscripcion');
+    mensajeInscripcion.textContent = `¡Gracias, ${nombre}! Te has inscrito al curso: ${curso}. Se enviará un correo a ${email}.`;
+    
+
+    document.getElementById('certificadoForm').reset();
+});
+
+/* <!--RECOMPENSAS --> */
+function mostrarRecompensas() {
+    const recompensasLista = document.getElementById("recompensasLista");
+    recompensasLista.classList.toggle("oculto");
+}
+
+function reclamarRecompensa(recompensa) {
+    const mensajeElement = document.getElementById("mensajeRecompensas");
+    mensajeElement.textContent = `¡Has reclamado: ${recompensa}! Disfruta de tu recompensa y sigue contribuyendo al planeta.`;
+
+    const botones = document.querySelectorAll(".reclamar-btn");
+    botones.forEach(boton => {
+        if (boton.textContent.includes(recompensa)) {
+            boton.disabled = true;
+            boton.textContent = "Reclamado";
+            boton.style.backgroundColor = "#ccc";
+            boton.style.cursor = "not-allowed";
+        }
+    });
+}
+
+/* <!--REGISTRO CONSUMO --> */
+function registrarConsumo() {
+    const energiaMes = document.getElementById("energiaMes").value;
+    const aguaMes = document.getElementById("aguaMes").value;
+    
+    if (energiaMes && aguaMes) {
+        const tabla = document.getElementById("tablaConsumo").getElementsByTagName('tbody')[0];
+        
+ 
+        const nuevaFila = tabla.insertRow();
+        const celdaMes = nuevaFila.insertCell(0);
+        const celdaEnergia = nuevaFila.insertCell(1);
+        const celdaAgua = nuevaFila.insertCell(2);
+
+
+        const fecha = new Date();
+        const mesActual = fecha.toLocaleString('default', { month: 'long' });
+        
+
+        celdaMes.textContent = mesActual;
+        celdaEnergia.textContent = energiaMes;
+        celdaAgua.textContent = aguaMes;
+
+ 
+        document.getElementById("consumoForm").reset();
+    } else {
+        alert("Por favor, completa todos los campos.");
+    }
+}
+
+
+    </script>
+</body>
+</html>

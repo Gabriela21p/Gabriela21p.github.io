@@ -1,0 +1,914 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    text-decoration: none;
+}
+
+/* Estilo general para la sección de calculadora */
+#calculadora_huella {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+#calculadora_huella h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#calculadora_huella p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.container_cal {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #218838;
+}
+
+#resultadoHuellaContainer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+    height: 20px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #28a745;
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    #calculadora_huella {
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+    #calculadora_huella h2 {
+        font-size: 1.5rem;
+    }
+
+    #calculadora_huella p {
+        font-size: 1rem;
+    }
+
+    .form-group input {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #calculadora_huella h2 {
+        font-size: 1.2rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
+
+/* Estilo general para la sección de monitoreo de consumo */
+#monitoreo_consumo {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+#monitoreo_consumo h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#monitoreo_consumo p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+#consumoForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#consumoForm label {
+    font-size: 1rem;
+    color: #333;
+}
+
+#consumoForm input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.registrar-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.registrar-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos de la tabla */
+#tablaConsumo {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#tablaConsumo th, #tablaConsumo td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+#tablaConsumo th {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+}
+
+#tablaConsumo td {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    #monitoreo_consumo {
+        padding: 15px;
+    }
+
+    #monitoreo_consumo h2 {
+        font-size: 1.5rem;
+    }
+
+    #monitoreo_consumo p {
+        font-size: 1rem;
+    }
+
+    .registrar-btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    #tablaConsumo th, #tablaConsumo td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #monitoreo_consumo h2 {
+        font-size: 1.2rem;
+    }
+
+    #consumoForm input {
+        font-size: 0.9rem;
+    }
+
+    .registrar-btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    #tablaConsumo th, #tablaConsumo td {
+        padding: 6px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Estilo general para la sección de la guía de reciclaje */
+#guia_reciclaje {
+    padding: 20px;
+    background-color: #e6f7ff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+#guia_reciclaje h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #004d80;
+}
+
+#guia_reciclaje p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.reciclaje-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.reciclaje-list li {
+    font-size: 1rem;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #fff;
+    border-left: 5px solid #004d80;
+    border-radius: 5px;
+}
+
+.video-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+video {
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    display: block;
+    padding: 10px 20px;
+    background-color: #004d80;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px auto;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #003a66;
+}
+
+.mensaje {
+    text-align: center;
+    font-size: 1rem;
+    color: #004d80;
+    margin-top: 10px;
+}
+
+.notificaciones {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #dff0ff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notificaciones h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #004d80;
+}
+
+.notificaciones p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.notificaciones input {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.notificaciones button {
+    width: 100%;
+    padding: 10px;
+    background-color: #004d80;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.notificaciones button:hover {
+    background-color: #003a66;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    #guia_reciclaje h2 {
+        font-size: 1.5rem;
+    }
+
+    .reciclaje-list li {
+        font-size: 0.9rem;
+    }
+
+    .btn, .notificaciones button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    video {
+        max-width: 90%;
+    }
+
+    .notificaciones input {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #guia_reciclaje h2 {
+        font-size: 1.2rem;
+    }
+
+    .btn, .notificaciones button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    .notificaciones input {
+        font-size: 0.8rem;
+    }
+}
+
+/* Estilo para la sección de proyectos ambientales */
+#proyectos_ambientales {
+    padding: 20px;
+    background-color: #f0f8f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+#proyectos_ambientales h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #2d6a4f;
+    margin-bottom: 15px;
+}
+
+#proyectos_ambientales p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.proyectos-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.proyectos-list li {
+    font-size: 1rem;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border-left: 5px solid #2d6a4f;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detalles-btn {
+    padding: 5px 10px;
+    background-color: #2d6a4f;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.detalles-btn:hover {
+    background-color: #1b4332;
+}
+
+.mensaje {
+    text-align: center;
+    font-size: 1rem;
+    color: #2d6a4f;
+    margin-top: 10px;
+}
+
+.form-container {
+    padding: 20px;
+    background-color: #e6f4ea;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.form-container h3 {
+    font-size: 1.5rem;
+    color: #2d6a4f;
+    margin-bottom: 15px;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container label {
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.form-container input,
+.form-container select {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-container button {
+    padding: 10px;
+    background-color: #2d6a4f;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+    background-color: #1b4332;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    #proyectos_ambientales h2 {
+        font-size: 1.5rem;
+    }
+
+    .proyectos-list li {
+        font-size: 0.9rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .detalles-btn {
+        font-size: 0.9rem;
+        padding: 5px 8px;
+    }
+
+    .form-container {
+        padding: 15px;
+    }
+
+    .form-container h3 {
+        font-size: 1.2rem;
+    }
+
+    .form-container input,
+    .form-container select {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #proyectos_ambientales h2 {
+        font-size: 1.2rem;
+    }
+
+    .detalles-btn {
+        font-size: 0.8rem;
+        padding: 5px 7px;
+    }
+
+    .form-container button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .form-container input,
+    .form-container select {
+        font-size: 0.8rem;
+    }
+}
+
+/* Estilos de la sección Educación y Recursos */
+#educacion_recursos {
+    padding: 20px;
+    background-color: #f7fbfc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+#educacion_recursos h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #1b4d89;
+    margin-bottom: 15px;
+}
+
+#educacion_recursos p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.recursos-list {
+    list-style: none;
+    padding: 0;
+}
+
+.recursos-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    border-left: 5px solid #1b4d89;
+    border-radius: 5px;
+}
+
+.recurso-link {
+    font-size: 1rem;
+    color: #1b4d89;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.recurso-link:hover {
+    color: #0d335d;
+}
+
+.favorito-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #f1c40f;
+    transition: transform 0.2s;
+}
+
+.favorito-btn:hover {
+    transform: scale(1.2);
+}
+
+.empresa-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.empresa-container button {
+    padding: 10px 20px;
+    background-color: #1b4d89;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.empresa-container button:hover {
+    background-color: #0d335d;
+}
+
+.formulario {
+    padding: 20px;
+    background-color: #eaf4f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.formulario h3 {
+    font-size: 1.5rem;
+    color: #1b4d89;
+    margin-bottom: 15px;
+}
+
+.formulario label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.formulario input,
+.formulario select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.formulario button {
+    padding: 10px;
+    background-color: #1b4d89;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.formulario button:hover {
+    background-color: #0d335d;
+}
+
+.video-container {
+    margin-top: 20px;
+}
+
+.video-container h3 {
+    font-size: 1.5rem;
+    color: #1b4d89;
+    margin-bottom: 10px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    #educacion_recursos h2 {
+        font-size: 1.5rem;
+    }
+
+    .recursos-list li {
+        font-size: 0.9rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .recurso-link {
+        font-size: 0.9rem;
+    }
+
+    .favorito-btn {
+        font-size: 1.3rem;
+    }
+
+    .formulario h3 {
+        font-size: 1.2rem;
+    }
+
+    .formulario input,
+    .formulario select {
+        font-size: 0.9rem;
+    }
+
+    .formulario button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    #educacion_recursos h2 {
+        font-size: 1.2rem;
+    }
+
+    .favorito-btn {
+        font-size: 1.2rem;
+    }
+
+    .formulario input,
+    .formulario select {
+        font-size: 0.8rem;
+    }
+
+    .formulario button {
+        padding: 7px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Estilos para la sección Recompensas */
+.recompensas-container {
+    padding: 20px;
+    background-color: #f1f8f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.recompensas-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #2d8659;
+    margin-bottom: 15px;
+}
+
+.recompensas-container p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.ver-recompensas-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #2d8659;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.ver-recompensas-btn:hover {
+    background-color: #1e5940;
+}
+
+.recompensas-lista {
+    margin-top: 20px;
+}
+
+.recompensas-lista h3 {
+    font-size: 1.5rem;
+    color: #2d8659;
+    margin-bottom: 15px;
+}
+
+.recompensas-lista ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recompensa-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    border-left: 5px solid #2d8659;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.recompensa-item p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+}
+
+.reclamar-btn {
+    padding: 8px 16px;
+    background-color: #f9c74f;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.reclamar-btn:hover {
+    background-color: #f6b93f;
+}
+
+.mensaje {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #2d8659;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .recompensas-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .recompensa-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .reclamar-btn {
+        margin-top: 10px;
+        font-size: 0.8rem;
+    }
+
+    .ver-recompensas-btn {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .recompensas-container h2 {
+        font-size: 1.2rem;
+    }
+
+    .reclamar-btn {
+        font-size: 0.75rem;
+    }
+
+    .ver-recompensas-btn {
+        font-size: 0.8rem;
+    }
+}
